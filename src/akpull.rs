@@ -117,7 +117,7 @@ const KERNEL_GENERIC_END: &'static str = r#"
 }
 "#;
 
-pub(crate) fn akpull(args: &AkPullArgs, write: &dyn Write) -> Result<AkPullResult> {
+pub(crate) fn akpull(args: &AkPullArgs) -> Result<AkPullResult> {
   let v = args.verbose;
   debug_print(v, &format!("n6: {}", args.n6));
   debug_print(v, &format!("n5: {}", args.n5));

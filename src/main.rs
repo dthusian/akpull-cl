@@ -26,8 +26,8 @@ struct Args {
   banner: BannerType,
 
   /// Number of pulls (can specify multiple)
-  #[clap(short, long, value_parser, default_value = "150")]
-  pulls: Vec<u64>,
+  #[clap(short, long, value_parser)]
+  pulls: u64,
 
   /// Number of trials
   #[clap(short, long, value_parser, default_value = "10000000")]
@@ -160,7 +160,7 @@ fn main() -> Result<()> {
   let total_counts = pull_args.ntrials as f64;
   for q in pull_args.queries {
     print!("\x1b[96m{:>25.25}\x1b[0m", q.0);
-    for j in 0..pull_args.npulls.len() {
+    for _ in 0..pull_args.npulls.len() {
       let count = result.counts[i] as f64;
       let percentage = 100f64 * (count / total_counts);
       print!(" {:>6.2}", percentage);
