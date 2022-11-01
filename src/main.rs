@@ -27,7 +27,7 @@ struct Args {
 
   /// Number of pulls (can specify multiple)
   #[clap(short, long, value_parser)]
-  pulls: u64,
+  pulls: Vec<u64>,
 
   /// Number of trials
   #[clap(short, long, value_parser, default_value = "10000000")]
@@ -150,7 +150,7 @@ fn main() -> Result<()> {
   if args.rate5b.is_some() { pull_args.rate5b = args.rate5b.unwrap(); }
   if args.stdpool.is_some() { pull_args.stdpool = args.stdpool.unwrap(); }
 
-  let result = akpull(&pull_args, &mut stdout().lock())?;
+  let result = akpull(&pull_args)?;
   print!("\x1b[92m{:25}", "");
   for n in pull_args.npulls.as_slice() {
     print!(" {:>6.5}", n);

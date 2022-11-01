@@ -96,6 +96,7 @@ __kernel void k(__global ulong* counts, __constant ulong* npulls) {
         }
       } else if(r1 < 8 + pity6_add || pity5 == 9) {
         // 5*
+        pity6++;
         pity5 = 10;
         if(r2 < RATE5B) {
           r3 %= N5;
