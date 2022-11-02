@@ -79,7 +79,7 @@ __kernel void k(__global ulong* counts, __constant ulong* npulls) {
       ulong r3 = rng_read(state);
       state = rng_step(state);
 
-      int pity6_add = max((int)2, (int)(2 * (pity6 - 49)));
+      int pity6_add = max((int)2, (int)(2 * (pity6 - 48)));
       r1 %= 100;
       r2 %= 100;
       if(r1 < pity6_add) {
