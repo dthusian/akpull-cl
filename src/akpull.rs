@@ -67,7 +67,6 @@ __kernel void k(__global ulong* counts, __constant ulong* npulls) {
   uint off5 = 0;
 
   int pity6 = 0;
-  int pity5 = 0;
   ulong4 state = rng_init(get_global_id(0));
 
   for(uint i = 0; i < NNPULLS; i++) {
@@ -86,7 +85,6 @@ __kernel void k(__global ulong* counts, __constant ulong* npulls) {
       if(r1 < pity6_add) {
         // 6*
         pity6 = 0;
-        pity5 = 10;
         if(r2 < RATE6B) {
           r3 %= N6;
           banner6s[r3]++;
@@ -94,10 +92,9 @@ __kernel void k(__global ulong* counts, __constant ulong* npulls) {
         } else {
           off6++;
         }
-      } else if(r1 < 8 + pity6_add || pity5 == 9) {
+      } else if(r1 < 8 + pity6_add) {
         // 5*
         pity6++;
-        pity5 = 10;
         if(r2 < RATE5B) {
           r3 %= N5;
           banner5s[r3]++;
@@ -107,7 +104,6 @@ __kernel void k(__global ulong* counts, __constant ulong* npulls) {
         }
       } else {
         pity6++;
-        pity5++;
       }
 
     }
